@@ -4,8 +4,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: process.env.DB_DIALECT || "postgres",
+  dialect: "postgres",
+  protocol: "postgres",
   logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 // importa models
