@@ -1,5 +1,5 @@
-import Cliente from "../model/model_cliente.js";
-import Pedido from "../model/model_pedido.js";
+import Cliente from "../models/model_cliente.js";
+import Pedido from "../models/model_pedido.js";
 
 class ClienteController {
   async listar(req, res) {

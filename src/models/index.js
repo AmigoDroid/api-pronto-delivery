@@ -19,7 +19,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 import initUser from "./model_user.js";
 import initFilial from "./model_filial.js";
 import initCliente from "./model_cliente.js";
-import initEnderecoCliente from "./model_endereco_cliente.js";
+import initEnderecoCliente from "./model_enderecocliente.js";
 import initColaborador from "./model_colaborador.js";
 import initCategoria from "./model_categoria.js";
 import initProduto from "./model_produto.js";

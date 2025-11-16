@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ColaboradorController from "../controller/controller_colaborador.js";
+import ColaboradorController from "../controllers/controller_colaborador.js";
 
 const router = Router();
 

@@ -1,10 +1,10 @@
 // routes/filialRoutes.js
 import express from 'express';
-import { listFiliais, createFilial, getFilial } from '../controllers/filialController.js';
+import filialController from '../controllers/filialController.js';
 const router = express.Router();
 
-router.get('/', listFiliais);
-router.post('/', createFilial);
-router.get('/:id', getFilial);
+router.get('/', filialController.listar);
+router.post('/', filialController.criar);
+router.get('/:id', filialController.buscar);
 
 export default router;

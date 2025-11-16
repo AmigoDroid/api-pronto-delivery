@@ -9,12 +9,12 @@ import bodyParser from "body-parser";
 import { sequelize } from "./models/index.js";
 
 // Rotas
-import filialRoutes from "./routes/routes_filial.js";
-import clienteRoutes from "./routes/routes_cliente.js";
-import colaboradorRoutes from "./routes/routes_colaborador.js";
-import pedidoRoutes from "./routes/routes_pedido.js";
-import produtoRoutes from "./routes/routes_produto.js";
-import categoriaRoutes from "./routes/routes_categoria.js";
+import filialRoutes from "./router/filialRoutes.js";
+import clienteRoutes from "./router/routes_cliente.js";
+import colaboradorRoutes from "./router/routes_colaborador.js";
+import pedidoRoutes from "./router/routes_pedido.js";
+import produtoRoutes from "./router/routes_produto.js";
+import categoriaRoutes from "./router/routes_categoria.js";
 
 // Auth (JWT)
 import jwt from "jsonwebtoken";

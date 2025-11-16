@@ -1,4 +1,4 @@
-import Colaborador from "../model/model_colaborador.js";
+import Colaborador from "../models/model_colaborador.js";
 
 class ColaboradorController {
   async listar(req, res) {

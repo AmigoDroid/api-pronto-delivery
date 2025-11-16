@@ -1,4 +1,4 @@
-import Filial from "../model/model_filial.js";
+import Filial from "../models/model_filial.js";
 
 class FilialController {
   async listar(req, res) {

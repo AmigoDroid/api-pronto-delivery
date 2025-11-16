@@ -1,4 +1,4 @@
-import Categoria from "../model/model_categoria.js";
+import Categoria from "../models/model_categoria.js";
 
 class CategoriaController {
   async listar(req, res) {

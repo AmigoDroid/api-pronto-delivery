@@ -1,5 +1,5 @@
 import { Router } from "express";
-import FilialController from "../controller/controller_filial.js";
+import FilialController from "../controllers/filialController.js";
 
 const router = Router();
 
