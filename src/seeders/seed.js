@@ -11,9 +11,9 @@ export async function criarSeeds() {
   try {
     // 1) Criar Filial padrão
     const filial = await Filial.create({
-      nome: "Filial Central",
-      endereco: "Rua Principal, 123 - Centro",
-      telefone: "99999-8888",
+      nome: "Pronto Delivery LV",
+      endereco: "Rua Dom Pedro, Centro",
+      telefone: "(99)9 8492-1964",
       ativo: true
     });
 
@@ -22,8 +22,8 @@ export async function criarSeeds() {
     // 2) Criar usuário ADMIN
     const admin = await User.create({
       nome: "Administrador",
-      email: "admin@pronto.com",
-      senha: "admin123",
+      email: "lucianodasilvacosta.deve@gmail.com",
+      senha: "#Gustavo582426600",
       role: "admin",
       filialId: filial.id
     });
@@ -32,11 +32,11 @@ export async function criarSeeds() {
 
     // 3) Criar Colaborador associado
     await Colaborador.create({
-      nome: "Carlos Silva",
-      cpf: "11111111111",
-      endereco: "Bairro Centro",
-      email: "carlos@pronto.com",
-      senha: "123",
+      nome: "Larissa Gomes Lima",
+      cpf: "60590850326",
+      endereco: "Rua Senador Sarney, 404",
+      email: "larissa@prontodelivery.com.br",
+      senha: "#Larissa1810",
       cargo: "Atendente",
       setor: "Balcão",
       filialId: filial.id
@@ -44,30 +44,13 @@ export async function criarSeeds() {
 
     console.log("✔ Colaborador criado");
 
-    // 4) Criar 2 clientes
-    await Cliente.create({
-      nome: "João Souza",
-      cpf: "22222222222",
-      endereco: "Rua das Mangueiras",
-      email: "joao@example.com",
-      senha: "123",
-      filialId: filial.id
-    });
-
-    await Cliente.create({
-      nome: "Maria Silva",
-      cpf: "33333333333",
-      endereco: "Av. Amazonas",
-      email: "maria@example.com",
-      senha: "123",
-      filialId: filial.id
-    });
-
+  
     console.log("✔ Clientes criados");
 
     // 5) Categorias
-    const bebidas = await Categoria.create({ nome: "Bebidas" });
-    const lanches = await Categoria.create({ nome: "Lanches" });
+    const bebidas = await Categoria.create({ nome: "Guaraná da Amazônia" });
+    const lanches = await Categoria.create({ nome: "Hamburguer" });
+  
 
     // 6) Produtos (cardápio)
     await Produto.create({
