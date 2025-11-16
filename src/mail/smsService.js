@@ -35,9 +35,4 @@ async function enviarSMS(numero, mensagem) {
     }
   }
 }
-const lara = "99984921964"
-const numeroClinete = '99999521441';
-const numeroClinete2 = '99984972864';
-const codBrasil = '55';
-// Exemplo de uso
-enviarSMS(codBrasil+numeroClinete, 'Uhuu! Seu pedido do Pronto Delivery está a caminho 🍔🚀 Prepare-se para saborear em breve!');
+export { enviarSMS };

@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import templetes_email from "./templetes_email.js";
 
 dotenv.config();
 const linkLogo = "https://i.imgur.com/zKFcdsk_d.jpeg?maxwidth=520&shape=thumb&fidelity=high";
@@ -19,28 +20,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export async function enviarEmail({ Email, assunto, mensagem }) {
+export async function enviarEmail({ Email, assunto,html}) {
   try {
     const info = await transporter.sendMail({
       from: "Pronto Delivery <contato@prontodelivery.com.br>",
       to: Email,
       subject: assunto,
-      html: `
-        <div style="text-align:center;padding:20px 0;">
-          <img src="cid:logoPronto" style="width:160px; border-radius:12px;" />
-        </div>
-
-        <div style="font-family:Arial, sans-serif; font-size:16px;">
-          ${mensagem}
-        </div>
-      `,
-      attachments: [
-        {
-          filename: "logo.png",
-          path: linkLogo,
-          cid: "logoPronto"
-        }
-      ]
+      html:html
     });
 
     console.log("Email enviado:", info.messageId);
@@ -50,14 +36,26 @@ export async function enviarEmail({ Email, assunto, mensagem }) {
     throw error;
   }
 }
-
-
+ const htmlpedido = templetes_email.pedido(
+  120,
+  "Saiu para entrega",
+  "15–30 minutos",
+  [
+    { nome: "Pizza Calabresa", qtd: 1, preco: 32.90 },
+    { nome: "Coca 1L", qtd: 1, preco: 8.50 }
+  ],
+  41.40
+);
+const htmlpromocao = templetes_email.promocao("Super Promoção de Verão!", "Aproveite 20% de desconto em todos os pedidos feitos até o final do mês. Use o código VERÃO20 ao finalizar sua compra e desfrute de nossas deliciosas opções com um preço especial. Não perca essa oportunidade de saborear suas comidas favoritas com um super desconto. Faça seu pedido agora e celebre o verão com sabor!", linkLogo);
+const htmlredefinirsenha = templetes_email.recuperacaoSenha("839201");
+const html = templetes_email.codigoVerificacao("839201");
 (async () => {
   try {
     await enviarEmail({
       Email: "canalmeuovo36@gmail.com",
       assunto: "Pedido Enviado",
-      mensagem: "<h1>Pedido a Caminho!</h1><p>o entregador saiu para entregar seu pedido!</p>"
+      html: html
+      
     });
   } catch (error) {
     console.error("Erro no envio de email de teste:", error);
