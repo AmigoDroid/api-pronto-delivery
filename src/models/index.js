@@ -3,7 +3,7 @@ import { Sequelize, DataTypes } from "sequelize";
 import dotenv from "dotenv";
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize("postgresql://neondb_owner:npg_L6YP0sTBxcqA@ep-rapid-star-a4pdddxk-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require", {
   dialect: "postgres",
   protocol: "postgres",
   logging: false,

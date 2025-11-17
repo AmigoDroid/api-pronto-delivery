@@ -1,20 +1,26 @@
-import Filial from "../model/model_filial.js";
-import User from "../model/model_user.js";
-import Colaborador from "../model/model_colaborador.js";
-import Cliente from "../model/model_cliente.js";
-import Categoria from "../model/model_categoria.js";
-import Produto from "../model/model_produto.js";
+import {
+  sequelize,
+  Filial,
+  User,
+  Colaborador,
+  Categoria,
+  Produto
+} from "../models/index.js";
 
 export async function criarSeeds() {
   console.log("🌱 Iniciando seeds...");
 
   try {
+    // Sincroniza tabelas
+    await sequelize.sync({ force: true });
+    console.log("🔄 Banco sincronizado");
+
     // 1) Criar Filial padrão
     const filial = await Filial.create({
-      nome: "Pronto Delivery LV",
+      nome: "Pronto Delivery",
+      slug: "Pronto Delivery LV",
       endereco: "Rua Dom Pedro, Centro",
-      telefone: "(99)9 8492-1964",
-      ativo: true
+      telefone: "(99)9 8492-1964"
     });
 
     console.log("✔ Filial criada:", filial.nome);
@@ -30,7 +36,7 @@ export async function criarSeeds() {
 
     console.log("✔ Usuário admin criado:", admin.email);
 
-    // 3) Criar Colaborador associado
+    // 3) Criar Colaboradores
     await Colaborador.create({
       nome: "Larissa Gomes Lima",
       cpf: "60590850326",
@@ -42,17 +48,24 @@ export async function criarSeeds() {
       filialId: filial.id
     });
 
-    console.log("✔ Colaborador criado");
+    await Colaborador.create({
+      nome: "Maria de Fatima",
+      cpf: "99999999999",
+      endereco: "Dom Pedro, SN",
+      email: "maria@prontodelivery.com.br",
+      senha: "#Maria1234",
+      cargo: "Atendente",
+      setor: "Balcão",
+      filialId: filial.id
+    });
 
-  
-    console.log("✔ Clientes criados");
+    console.log("✔ Colaboradores criados");
 
-    // 5) Categorias
+    // 4) Categorias
     const bebidas = await Categoria.create({ nome: "Guaraná da Amazônia" });
     const lanches = await Categoria.create({ nome: "Hamburguer" });
-  
 
-    // 6) Produtos (cardápio)
+    // 5) Produtos
     await Produto.create({
       nome: "Guaraná da Amazônia",
       preco: 8,
@@ -75,11 +88,14 @@ export async function criarSeeds() {
     });
 
     console.log("✔ Produtos criados");
-
     console.log("🌱 Seeds finalizadas com sucesso!");
+
+    await sequelize.close();
   } catch (err) {
-    console.error("❌ Erro ao criar seeds:", err.message);
+    console.error("❌ Erro ao criar seeds:", err);
   }
 }
 
-export default criarSeeds;
+(async () => {
+  await criarSeeds();
+})();
