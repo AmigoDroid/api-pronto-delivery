@@ -15,6 +15,7 @@ import colaboradorRoutes from "./router/routes_colaborador.js";
 import pedidoRoutes from "./router/routes_pedido.js";
 import produtoRoutes from "./router/routes_produto.js";
 import categoriaRoutes from "./router/routes_categoria.js";
+import pagamentoRoutes from "./router/routes_pagamento.js";
 
 // Auth (JWT)
 import jwt from "jsonwebtoken";
@@ -55,7 +56,7 @@ app.use("/api/colaboradores", colaboradorRoutes);
 app.use("/api/pedidos", pedidoRoutes);
 app.use("/api/produtos", produtoRoutes);
 app.use("/api/categorias", categoriaRoutes);
-app.use("/api/payment",);
+app.use("/api/payment", pagamentoRoutes);
 
 // =========================================
 // Servidor + DB
