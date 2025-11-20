@@ -55,6 +55,7 @@ app.use("/api/colaboradores", colaboradorRoutes);
 app.use("/api/pedidos", pedidoRoutes);
 app.use("/api/produtos", produtoRoutes);
 app.use("/api/categorias", categoriaRoutes);
+app.use("/api/payment",);
 
 // =========================================
 // Servidor + DB

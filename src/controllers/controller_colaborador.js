@@ -1,5 +1,4 @@
-import Colaborador from "../models/model_colaborador.js";
-
+import {Colaborador} from "../models/index.js";
 class ColaboradorController {
   async listar(req, res) {
     const dados = await Colaborador.findAll();

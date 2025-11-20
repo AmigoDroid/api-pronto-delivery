@@ -1,5 +1,4 @@
-import Produto from "../models/model_produto.js";
-import Categoria from "../models/model_categoria.js";
+import {Categoria,Produto} from "../models/index.js";
 
 class ProdutoController {
   async listar(req, res) {

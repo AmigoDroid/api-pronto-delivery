@@ -1,5 +1,4 @@
-import Categoria from "../models/model_categoria.js";
-
+import {Categoria} from "../models/index.js";
 class CategoriaController {
   async listar(req, res) {
     const dados = await Categoria.findAll();

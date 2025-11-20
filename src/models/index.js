@@ -77,6 +77,10 @@ Pagamento.belongsTo(Pedido, { foreignKey: "pedidoId" });
 User.hasMany(LogAuditoria, { foreignKey: "userId" });
 LogAuditoria.belongsTo(User, { foreignKey: "userId" });
 
+Categoria.hasMany(Produto, { foreignKey: "categoriaId" });
+Produto.belongsTo(Categoria, { foreignKey: "categoriaId" });
+
+
 // exporta
 export {
   sequelize,
